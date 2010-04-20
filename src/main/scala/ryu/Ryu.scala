@@ -32,7 +32,7 @@ object Ryu {
   
   /** one doc */
  // type Doc = (String, scala.collection.Map.Projection[String, Set[String]])
-  type Doc = (String, scala.collection.IterableView[String, Set[String]])
+  type Doc = (String, scala.collection.DefaultMap[String, Set[String]])
 
   /** many docs :P */
   type MultiDoc = List[(String, dispatch.mime.Mime.Headers)]
@@ -99,7 +99,7 @@ object Ryu {
     
     /** Save or update multiple documents @return List[(doc,headers)] */
     //def ++ [T](kvs: Iterable[(^, String)]) = ((List[(String, scala.collection.Map.Projection[String, Set[String]])]() /: kvs) (
-    def ++ [T](kvs: Iterable[(^, String)]) = ((List[(String, scala.collection.IterableView[String, Set[String]])]() /: kvs) (
+    def ++ [T](kvs: Iterable[(^, String)]) = ((List[(String, scala.collection.DefaultMap[String, Set[String]])]() /: kvs) (
       (l, e) => apply(e._1, e._2) :: l
     )).reverse
     
